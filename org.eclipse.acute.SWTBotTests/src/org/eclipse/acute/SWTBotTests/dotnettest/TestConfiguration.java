@@ -50,7 +50,11 @@ public class TestConfiguration extends AbstractDotnetTest {
 	public void testSelectTestMethod() {
 		bot.radio("Run a single test").click();
 		bot.button("\uD83D\uDD0ESearch", 0).click();
-		bot.waitUntil(Conditions.shellIsActive("Class Selection"), 30000);
+		// The first search shells out to "dotnet restore" and "dotnet test
+		// --list-tests", which builds the project and runs test discovery before
+		// the dialog can open. Allow for that on a loaded machine; the second
+		// search reuses the cached result.
+		bot.waitUntil(Conditions.shellIsActive("Class Selection"), 120000);
 		bot.button("OK").click();
 
 		String className = bot.textWithLabel("Test class:").getText();
