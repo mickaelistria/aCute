@@ -35,7 +35,8 @@
             class="org.eclipse.acute.RoslynLSConnectionProvider"
             clientImpl="org.eclipse.acute.RoslynLanguageClient"
             id="org.eclipse.acute.roslynLS"
-            label="org.eclipse.acute.roslynLS">
+            label="org.eclipse.acute.roslynLS"
+            singleton="true">
       </server>
       <contentTypeMapping
             contentType="org.eclipse.acute.csharp"
